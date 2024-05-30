@@ -18,7 +18,7 @@ function App() {
     <>
       <button onClick={add}>Add Value : {count}</button>
       <button onClick={sub}>Decrease value : {count}</button>
-      <footer >{count}</footer>
+      <footer className='bg-black font-bold rounded-xl mt-8 text-white'>{count}</footer>
     </>
   )
 }
