@@ -1,5 +1,5 @@
 import { useState,useCallback,useEffect,useRef } from 'react'
-
+import { toast } from 'react-toastify';
 import './App.css'
 
 function App() {
@@ -13,8 +13,10 @@ function App() {
   const [isCopied, setIsCopied] = useState(false);
 
   const copyPasswordToClipboard = () => {
+      // passwordRef.current?.select(); just to show/highlight the password is selected   &&    ? is used for optional selection (in case password is not present)
       navigator.clipboard.writeText(password); 
       setIsCopied(true);
+      toast.success("Password copied to clipboard")
       setTimeout(() => {
           setIsCopied(false);
       }, 1000); 
@@ -49,11 +51,6 @@ function App() {
   return (
   
     <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 bg-gray-800 text-orange-500">
-    {isCopied && (
-                <div className="mt-2 p-2 m-2 bg-green-500 text-white rounded justify-center">
-                    Password copied!
-                </div>
-            )}
       <h1 className='text-white text-center my-3'>Password generator</h1>
     <div className="flex shadow rounded-lg overflow-hidden mb-4">
         <input
@@ -65,11 +62,11 @@ function App() {
             ref={passwordRef}
         />
          <button
-                onClick={copyPasswordToClipboard}
-                className="outline-none bg-blue-700 text-white px-3 py-1 rounded transition transform active:scale-95"
-            >
-                Copy
-            </button>
+            onClick={copyPasswordToClipboard}
+            className="outline-none bg-blue-700 text-white px-3 py-1 rounded transition transform active:scale-95"
+          >
+          Copy
+          </button>
     </div>
     <div className='flex text-sm gap-x-2'>
       <div className='flex items-center gap-x-1'>
