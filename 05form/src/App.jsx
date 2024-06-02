@@ -7,6 +7,7 @@ function App() {
   const [fullname, setFullName] = useState({
     fname: '',
     lname: '',
+    pass:'',
   })
   const [iscopied,setIsCopied] = useState(false);
   const handle = (e) => {
@@ -27,13 +28,18 @@ function App() {
     setIsCopied(true)
     setTimeout(()=>{
       setIsCopied(false);
-    },2000);
+    },6000);
   }
+
   return (
     <>
-    <div style={{backgroundColor:"black"}}>
-    {iscopied && <p style={{backgroundColor:"red"}}>{fullname.fname}{fullname.lname}</p>}
+    <div style={{backgroundColor:"black",borderRadius:"30px",boxShadow:"20px"}}>
+        {iscopied && <p style={{backgroundColor:"black", color:"white"}}>
+        form submitted
+        <br/>
+        {fullname.fname}{fullname.lname}<br/>{fullname.pass}</p>}
     </div>
+    <img src={reactLogo} alt="react logo" />
     <form onSubmit={display}>
       <input 
         type = "text"
@@ -48,6 +54,14 @@ function App() {
         placeholder = "Enter your name"
         onChange={handle}
         value={fullname.lname}
+      />
+      <br/>
+      <input 
+        type = "password"
+        name = "pass"
+        placeholder = "Enter your pass"
+        onChange={handle}
+        value={fullname.pass}
       />
       <button type="submit">submit </button>
       </form>
