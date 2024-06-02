@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Dropdown from './dropdown';
 import { HiArrowsRightLeft } from 'react-icons/hi2';
+import { Audio } from 'react-loader-spinner';
 
 function CurrencyConverter() {
-    const[currencies,setCurrencies] = useState([]);
+    const [currencies,setCurrencies] = useState([]);
     const [amount,setAmount] = useState(1);
     const [fromcurrency,setFromCurrency] = useState("USD")
     const [tocurrency,setToCurrency] = useState("INR")
@@ -67,7 +68,15 @@ function CurrencyConverter() {
 
   return (
     <>
+    <div className='absolute w-full inset-x-0 mt-48 flex flex-wrap items-center justify-center text-white'>
+    {converting && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+          <Audio height="80" width="80" radius="9" color="green" ariaLabel="loading" />
+        </div>
+      )}
+    </div>
     <div className='max-w-xl mx-auto my-10 p-5 bg-white rounded-lg shadow-md'>
+    
         <h2 className='mb-5 text-2xl font-semibold text-gray-700'>
         Currency Converter
         </h2>
@@ -122,7 +131,7 @@ function CurrencyConverter() {
             {convertedamount && (<div className='mt-4 text-lg font-medium text-green-600 text-center'>
                 Converted Amount : {convertedamount} 
             </div>)}
-
+    
     </div>
     
     </>
