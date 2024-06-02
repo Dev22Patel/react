@@ -7,7 +7,8 @@ function App() {
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [charAllowed, setCharAllowed] = useState(false);
   const [password, setPassword] = useState("");
-
+  const [fullname,setFullName] = useState("")
+  const [name,setName] = useState("")
   //useRef hook
   const passwordRef = useRef(null)
   const [isCopied, setIsCopied] = useState(false);
@@ -22,6 +23,13 @@ function App() {
       }, 1000); 
   };
 
+  
+  const onsub = (e) => {
+    setName(e.target.value)
+  }
+  const show = () => {
+    setFullName(name)
+  }
   const passwordGenerator = useCallback(()=>{
     let pass="";
     let str="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -51,7 +59,7 @@ function App() {
   return (
   
     <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 bg-gray-800 text-orange-500">
-      <h1 className='text-white text-center my-3'>Password generator</h1>
+      <h1 className='text-white text-center my-3'>Password generator {fullname} </h1>
     <div className="flex shadow rounded-lg overflow-hidden mb-4">
         <input
             type="text"
@@ -61,6 +69,7 @@ function App() {
             readOnly
             ref={passwordRef}
         />
+        
          <button
             onClick={copyPasswordToClipboard}
             className="outline-none bg-blue-700 text-white px-3 py-1 rounded transition transform active:scale-95"
@@ -68,6 +77,19 @@ function App() {
           Copy
           </button>
     </div>
+    <br/>
+        <input
+            type="text"
+            className="outline-none w-full py-1 px-3"
+            placeholder="Password"
+            onChange={onsub}
+            value={name}
+        />
+        <button onClick={show}
+            className="outline-none bg-blue-700 text-white px-3 py-1 rounded transition transform active:scale-95"
+          >
+          click me 
+          </button>
     <div className='flex text-sm gap-x-2'>
       <div className='flex items-center gap-x-1'>
         <input 
