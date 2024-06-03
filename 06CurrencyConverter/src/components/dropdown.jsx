@@ -15,7 +15,7 @@ const Dropdown = ({
   return (
     <div>
         <label 
-        className='text-gray-700 font-medium text-sm block'
+        className='text-white font-medium text-sm block'
         htmlFor={title}>{title}</label>
 
         <div className='mt-1 relative'>
@@ -23,10 +23,10 @@ const Dropdown = ({
                         onChange={(e) => setCurrency(e.target.value)}
                         value={currency}
                         className='w-full p-2 border border-gray-300 rounded-md shadow-sm
-                        focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-300'>
+                        focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white'>
                         {favorites.map((currency)=>{
                             return(
-                                <option className='bg-gray-300 font-medium' value={currency} key={currency}>
+                                <option className='bg-white font-medium' value={currency} key={currency}>
                                     {currency} 
                                 </option>
                             )
