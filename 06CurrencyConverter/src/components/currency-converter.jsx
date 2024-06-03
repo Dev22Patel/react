@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Dropdown from './dropdown';
 import { HiArrowsRightLeft } from 'react-icons/hi2';
 import { Audio } from 'react-loader-spinner';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function CurrencyConverter() {
     const [currencies,setCurrencies] = useState([]);
     const [amount,setAmount] = useState(1);
@@ -38,7 +39,11 @@ function CurrencyConverter() {
 
    // https://api.frankfurter.app/latest?amount=1&from=USD&to=INR
    const currenciesConvert =async () =>{
-    if(!amount) return
+    if(!amount) {
+        toast.error("Amount is Empty");
+    }else if(amount == 0){
+        toast.error("Enter a valid amount");
+    }
     setConverting(true);
     try{
         const res = await fetch(`https://api.frankfurter.app/latest?amount=${amount}&from=${fromcurrency}&to=${tocurrency}`);
@@ -70,7 +75,7 @@ function CurrencyConverter() {
     <>
     <div className='absolute w-full inset-x-0 mt-48 flex flex-wrap items-center justify-center text-white'>
     {converting && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black bg-opacity-10 z-50 flex items-center justify-center">
           <Audio height="80" width="80" radius="9" color="green" ariaLabel="loading" />
         </div>
       )}
