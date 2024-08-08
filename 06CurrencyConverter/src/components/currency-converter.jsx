@@ -11,7 +11,7 @@ function CurrencyConverter() {
     const [tocurrency,setToCurrency] = useState("INR")
     const [convertedamount,setConvertedAmount] = useState(null)
     const [converting,setConverting] = useState(false)
-    const [favorites,setFavorites] = useState( ["INR"])
+    const [favorites,setFavorites] = useState(["INR"])
 
 
     // https://api.frankfurter.app/currencies
@@ -106,7 +106,7 @@ function CurrencyConverter() {
                           handleFavorite={handleFavorite} 
                           currency={tocurrency}
                           setCurrency={setToCurrency}
-                          favorites={favorites}  
+                          favorites={favorites} 
                 />
             </div>
 

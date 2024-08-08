@@ -8,9 +8,8 @@ const Dropdown = ({
     handleFavorite,
     title="",
 }) => {
-
-    
-    const isFavorite = (c) => favorites.includes(c)
+  
+  const isFavorite = (c) => favorites.includes(c)
 
   return (
     <div>
